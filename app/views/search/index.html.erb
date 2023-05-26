@@ -1,0 +1,25 @@
+<h3>Fire Nation Characters:</h3>
+<p>Total Characters: <%= @characters.count %></p>
+<ol>
+<% @characters[0..24].each do |character| %>
+<div id="character_<%= character[:_id]%>">
+<li>
+<% if !character[:photoUrl].nil? %>
+  <%= image_tag "#{character[:photoUrl]}", size: "100x100" %>
+<% end %>
+<p> Name:  <%= character[:name] %> </p>
+<% if character[:allies] == [] %>
+  <p>Allies: None</p>
+<% else %>
+  <p>Allies: <%= character[:allies].join(", ") %> </p>
+<%end%>
+<% if character[:enemies] == [] %>
+  <p>Enemies: None</p>
+<% else %>
+<p>Enemies: <%= character[:enemies].join(", ") %> </p> 
+<% end%>
+<p>Affiliation: <%= character[:affiliation] %> </p>
+<br></li>
+</div>
+<% end %>
+<ol>
